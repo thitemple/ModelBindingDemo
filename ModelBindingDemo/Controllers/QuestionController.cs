@@ -42,16 +42,17 @@ namespace ModelBindingDemo.Controllers
         // POST: /Question/Create
 
         [HttpPost]
-        public ActionResult Create(Question question)
+        public ActionResult Create(Question question1, Question question2)
         {
             if (ModelState.IsValid)
             {
-                _db.Questions.Add(question);
+                _db.Questions.Add(question1);
+                _db.Questions.Add(question2);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(question);
+            return View(question1);
         }
 
         //

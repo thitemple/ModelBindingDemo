@@ -1,43 +1,56 @@
 ﻿@model ModelBindingDemo.Models.Question
-
 @{
     ViewBag.Title = "Create new question";
 }
-
-<h2>Create new question</h2>
-
-@using (Html.BeginForm()) {
+<h2>
+    Create new question</h2>
+@using (Html.BeginForm())
+{
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Question</legend>
-
+        <legend>Question 1</legend>
         <div class="editor-label">
-            @Html.LabelFor(model => model.QuestionText)
+            @Html.Label("question1.QuestionText")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.QuestionText)
+            @Html.EditorFor(model => model.QuestionText, null, "question1.QuestionText")
             @Html.ValidationMessageFor(model => model.QuestionText)
         </div>
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.Answer)
+            @Html.Label("question1.Answer")
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Answer)
+            @Html.EditorFor(model => model.Answer, null, "question1.Answer")
             @Html.ValidationMessageFor(model => model.Answer)
         </div>
-
-        <p>
-            <input type="submit" value="Create" class="btn btn-primary" />
-        </p>
     </fieldset>
+    
+    <fieldset>
+        <legend>Question 2</legend>
+        <div class="editor-label">
+            @Html.Label("question2.QuestionText")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuestionText, null, "question2.QuestionText")
+            @Html.ValidationMessageFor(model => model.QuestionText)
+        </div>
+        <div class="editor-label">
+            @Html.Label("question2.Answer")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Answer, null, "question2.Answer")
+            @Html.ValidationMessageFor(model => model.Answer)
+        </div>
+    </fieldset>
+    
+    <p>
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </p>
 }
-
 <div>
     @Html.ActionLink("Back to Questions", "Index")
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
