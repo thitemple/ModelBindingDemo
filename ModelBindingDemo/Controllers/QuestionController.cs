@@ -35,6 +35,11 @@ namespace ModelBindingDemo.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Categories = _db.Categories.ToList().Select(option => new SelectListItem
+            {
+                Text = option.CategoryName,
+                Value = option.CategoryId.ToString()
+            });
             return View();
         }
 
@@ -42,17 +47,16 @@ namespace ModelBindingDemo.Controllers
         // POST: /Question/Create
 
         [HttpPost]
-        public ActionResult Create(Question question1, Question question2)
+        public ActionResult Create(Question question)
         {
             if (ModelState.IsValid)
             {
-                _db.Questions.Add(question1);
-                _db.Questions.Add(question2);
+                _db.Questions.Add(question);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(question1);
+            return View(question);
         }
 
         //

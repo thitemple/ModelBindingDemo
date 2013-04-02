@@ -24,6 +24,17 @@
             @Html.DisplayFor(model => model.Answer)
         </div>
     </div>
+    <div class="row">
+        <div class="span2">
+            <strong>@Html.DisplayNameFor(model => model.Category)</strong>
+        </div>
+        <div class="span10">
+            @if (Model.Category != null)
+            {
+                @Html.DisplayFor(model => model.Category.CategoryName)
+            }
+        </div>
+    </div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.QuestionId }) |

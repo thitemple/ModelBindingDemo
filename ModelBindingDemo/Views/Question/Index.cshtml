@@ -17,6 +17,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Answer)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
         <th></th>
     </tr>
 
@@ -28,6 +31,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Answer)
         </td>
+        <td>
+                @if(item.Category != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                }
+            </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.QuestionId }, new {@class = "btn"}) |
             @Html.ActionLink("Details", "Details", new { id = item.QuestionId }, new { @class = "btn" }) |

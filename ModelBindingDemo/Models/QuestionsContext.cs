@@ -10,5 +10,6 @@ namespace ModelBindingDemo.Models
         }
 
         public DbSet<Question> Questions { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

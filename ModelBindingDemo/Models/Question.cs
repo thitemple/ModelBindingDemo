@@ -13,5 +13,7 @@ namespace ModelBindingDemo.Models
 
         [Required]
         public string Answer { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }
