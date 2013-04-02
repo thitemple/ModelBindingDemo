@@ -1,0 +1,31 @@
+﻿@model ModelBindingDemo.Models.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Question</legend>
+    <div class="row">
+        <div class="span2">
+            <strong>@Html.DisplayNameFor(model => model.QuestionText)</strong>
+        </div>
+        <div class="span10">
+            @Html.DisplayFor(model => model.QuestionText)
+        </div>
+    </div>
+    <div class="row">
+        <div class="span2">
+            <strong>@Html.DisplayNameFor(model => model.Answer)</strong>
+        </div>
+        <div class="span10">
+            @Html.DisplayFor(model => model.Answer)
+        </div>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.QuestionId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
