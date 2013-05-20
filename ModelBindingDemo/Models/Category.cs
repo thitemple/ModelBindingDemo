@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ModelBindingDemo.Models
+namespace MvcApplicationCustomModelBinder.Models
 {
-    public class Category
+    public class Category : Entity
     {
         [Key]
         [Required]
         public int CategoryId { get; set; }
 
         [Required]
-        [Display(Name = "Category")]
         public string CategoryName { get; set; }
 
         public virtual List<Question> Questions { get; set; }

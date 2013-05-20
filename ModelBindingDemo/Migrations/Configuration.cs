@@ -1,21 +1,23 @@
-namespace ModelBindingDemo.Migrations
+using MvcApplicationCustomModelBinder.Models;
+
+namespace MvcApplicationCustomModelBinder.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Models.QuestionsContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<QuestionsContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Models.QuestionsContext context)
+        protected override void Seed(QuestionsContext context)
         {
             context.Categories.AddOrUpdate(
                 c => c.CategoryName,
-                new Models.Category { CategoryName = "Very important" },
-                new Models.Category { CategoryName = "Important" },
-                new Models.Category { CategoryName = "Not important" });
+                new Category { CategoryName = "Very important" },
+                new Category { CategoryName = "Important" },
+                new Category { CategoryName = "Not important" });
         }
     }
 }

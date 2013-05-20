@@ -1,6 +1,6 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 
-namespace ModelBindingDemo.Models
+namespace MvcApplicationCustomModelBinder.Models
 {
     public class QuestionsContext : DbContext
     {
@@ -9,7 +9,8 @@ namespace ModelBindingDemo.Models
         {
         }
 
-        public DbSet<Question> Questions { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 using System.Web.Optimization;
 
-[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(ModelBindingDemo.App_Start.BootstrapBundleConfig), "RegisterBundles")]
+[assembly: WebActivatorEx.PostApplicationStartMethod(typeof(MvcApplicationCustomModelBinder.App_Start.BootstrapBundleConfig), "RegisterBundles")]
 
-namespace ModelBindingDemo.App_Start
+namespace MvcApplicationCustomModelBinder.App_Start
 {
 	public class BootstrapBundleConfig
 	{

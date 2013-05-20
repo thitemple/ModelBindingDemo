@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ModelBindingDemo")]
+[assembly: AssemblyTitle("MvcApplicationCustomModelBinder")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Groupe CGI Inc.")]
-[assembly: AssemblyProduct("ModelBindingDemo")]
+[assembly: AssemblyProduct("MvcApplicationCustomModelBinder")]
 [assembly: AssemblyCopyright("Copyright © Groupe CGI Inc. 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("22ada160-dc8a-4d4e-8057-eb0b9a59b4b5")]
+[assembly: Guid("156eb97b-70b1-434e-ba69-fef0f8f84c87")]
 
 // Version information for an assembly consists of the following four values:
 //

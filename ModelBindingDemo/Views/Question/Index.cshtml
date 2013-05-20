@@ -1,13 +1,13 @@
-﻿@model IEnumerable<ModelBindingDemo.Models.Question>
+﻿@model IEnumerable<MvcApplicationCustomModelBinder.Models.Question>
 
 @{
-    ViewBag.Title = "Questions";
+    ViewBag.Title = "Index";
 }
 
-<h2>Questions</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null, new {@class = "btn"})
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table table-striped table-bordered">
     <tr>
@@ -23,26 +23,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.QuestionText)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Answer)
-        </td>
-        <td>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Answer)
+            </td>
+            <td>
                 @if(item.Category != null)
                 {
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    @item.Category.CategoryName
                 }
             </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.QuestionId }, new {@class = "btn"}) |
-            @Html.ActionLink("Details", "Details", new { id = item.QuestionId }, new { @class = "btn" }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.QuestionId }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
-
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.QuestionId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.QuestionId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.QuestionId })
+            </td>
+        </tr>
+    }
 </table>
+

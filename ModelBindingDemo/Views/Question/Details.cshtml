@@ -1,4 +1,4 @@
-﻿@model ModelBindingDemo.Models.Question
+﻿@model MvcApplicationCustomModelBinder.Models.Question
 
 @{
     ViewBag.Title = "Details";
@@ -8,32 +8,19 @@
 
 <fieldset>
     <legend>Question</legend>
-    <div class="row">
-        <div class="span2">
-            <strong>@Html.DisplayNameFor(model => model.QuestionText)</strong>
-        </div>
-        <div class="span10">
-            @Html.DisplayFor(model => model.QuestionText)
-        </div>
+
+    <div class="display-label">
+        <strong> @Html.DisplayNameFor(model => model.QuestionText)</strong>
     </div>
-    <div class="row">
-        <div class="span2">
-            <strong>@Html.DisplayNameFor(model => model.Answer)</strong>
-        </div>
-        <div class="span10">
-            @Html.DisplayFor(model => model.Answer)
-        </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QuestionText)
     </div>
-    <div class="row">
-        <div class="span2">
-            <strong>@Html.DisplayNameFor(model => model.Category)</strong>
-        </div>
-        <div class="span10">
-            @if (Model.Category != null)
-            {
-                @Html.DisplayFor(model => model.Category.CategoryName)
-            }
-        </div>
+
+    <div class="display-label">
+        <strong> @Html.DisplayNameFor(model => model.Answer)</strong>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Answer)
     </div>
 </fieldset>
 <p>

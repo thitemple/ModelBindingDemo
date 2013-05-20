@@ -1,33 +1,32 @@
-﻿using System.Data;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
-using ModelBindingDemo.Models;
+using MvcApplicationCustomModelBinder.Models;
 
-namespace ModelBindingDemo.Controllers
+namespace MvcApplicationCustomModelBinder.Controllers
 {
     public class QuestionController : Controller
     {
-        private readonly QuestionsContext _db = new QuestionsContext();
+        private readonly QuestionsContext db;
+
+        public QuestionController(QuestionsContext context)
+        {
+            db = context;
+        }
 
         //
         // GET: /Question/
 
         public ActionResult Index()
         {
-            return View(_db.Questions.ToList());
+            return View(db.Questions.Include("Category"));
         }
 
         //
         // GET: /Question/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id)
         {
-            Question question = _db.Questions.Find(id);
-            if (question == null)
-            {
-                return HttpNotFound();
-            }
-            return View(question);
+            return View(db.Questions.Find(id));
         }
 
         //
@@ -35,7 +34,7 @@ namespace ModelBindingDemo.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Categories = _db.Categories.ToList().Select(option => new SelectListItem
+            ViewBag.Categories = db.Categories.ToList().Select(option => new SelectListItem
             {
                 Text = option.CategoryName,
                 Value = option.CategoryId.ToString()
@@ -43,16 +42,15 @@ namespace ModelBindingDemo.Controllers
             return View();
         }
 
-        //
-        // POST: /Question/Create
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Question question)
         {
             if (ModelState.IsValid)
             {
-                _db.Questions.Add(question);
-                _db.SaveChanges();
+                db.Questions.Add(question);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -62,60 +60,54 @@ namespace ModelBindingDemo.Controllers
         //
         // GET: /Question/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id)
         {
-            Question question = _db.Questions.Find(id);
-            if (question == null)
-            {
-                return HttpNotFound();
-            }
-            return View(question);
+            return View();
         }
 
         //
         // POST: /Question/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Question question)
+        public ActionResult Edit(int id, FormCollection collection)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _db.Entry(question).State = EntityState.Modified;
-                _db.SaveChanges();
+                // TODO: Add update logic here
+
                 return RedirectToAction("Index");
             }
-            return View(question);
+            catch
+            {
+                return View();
+            }
         }
 
         //
         // GET: /Question/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id)
         {
-            Question question = _db.Questions.Find(id);
-            if (question == null)
-            {
-                return HttpNotFound();
-            }
-            return View(question);
+            return View();
         }
 
         //
         // POST: /Question/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
         {
-            Question question = _db.Questions.Find(id);
-            _db.Questions.Remove(question);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            try
+            {
+                db.Questions.Remove(db.Questions.Find(id));
+                db.SaveChanges();
 
-        protected override void Dispose(bool disposing)
-        {
-            _db.Dispose();
-            base.Dispose(disposing);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

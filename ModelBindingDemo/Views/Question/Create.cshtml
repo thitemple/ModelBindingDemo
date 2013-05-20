@@ -1,17 +1,24 @@
-﻿@model ModelBindingDemo.Models.Question
+﻿@model MvcApplicationCustomModelBinder.Models.Question
 
 @{
-    ViewBag.Title = "Create new question";
+    ViewBag.Title = "Create";
 }
 
-<h2>Create new question</h2>
+<h2>Create</h2>
 
 @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Question</legend>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Category)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.Categories, "Select a Category")
+        </div>
         <div class="editor-label">
             @Html.LabelFor(model => model.QuestionText)
         </div>
@@ -27,24 +34,13 @@
             @Html.EditorFor(model => model.Answer)
             @Html.ValidationMessageFor(model => model.Answer)
         </div>
-        
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Category)
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.Categories, "Select a Category")
-        </div>
 
         <p>
-            <input type="submit" value="Create" class="btn btn-primary" />
+            <input type="submit" value="Create" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to Questions", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace ModelBindingDemo
+namespace MvcApplicationCustomModelBinder
 {
     public class FilterConfig
     {
